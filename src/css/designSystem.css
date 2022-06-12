@@ -15,23 +15,40 @@
   --font-sd: 15px; /*15px*/
   --font-xs: 12px; /*12px*/
 
-  --spacing-xl: 165px;
-  --spacing-md: 64px;
-  --spacing-st: 32px;
-  --spacing-sm: 16px;
+  --spacing-xl--y: 120px;
+  --spacing-md--y: 72px;
+  --spacing-st--y: 48px;
+  --spacing-sm--y: 16px;
+
+  --transition-sd: 0.8s;
+  --transition-sm: 0.5s;
+  --transition-xs: 0.3s;
 
   --container-width: 1440px;
 
   --font: "Poppins", sans-serif;
+}
 
-  @media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
+  :root {
+    --spacing-xl--y: 96px;
+    --spacing-md--y: 32px;
+    --spacing-st--y: 24px;
+    --spacing-sm--y: 16px;
   }
-  @media screen and (max-width: 600px) {
+}
+@media screen and (max-width: 600px) {
+  :root {
+    --spacing-xl--y: 24px;
+    --spacing-md--y: 24px;
+    --spacing-st--y: 24px;
+    --spacing-sm--y: 24px;
   }
 }
 
 h1,
 h2 {
+  color: var(--gray-dark);
 }
 h1 {
   font-size: var(--spacing-xl);
@@ -92,23 +109,30 @@ a {
   text-decoration: none;
 }
 
-nav a {
+.nav_link {
   font-size: var(--font-sd);
   color: var(--gray);
   font-weight: bold;
 }
 
-button {
+.nav_burger {
+  font-size: var(--font-sd-lg);
+  color: var(--gray);
+  font-weight: bold;
+}
+
+.btn {
   background-color: var(--green);
   border: none;
   color: var(--light);
+  text-align: center;
 }
 
 .btn_rounded-big {
   font-size: var(--font-md) color white;
   text-transform: capitalize;
   font-weight: bold;
-  padding: 13px 24px;
+  padding: 9px 22px;
   border-radius: 28px;
 }
 
@@ -135,7 +159,7 @@ button {
   width: 100%;
 }
 
-input {
+.search {
   border: none;
   padding: 14px 2rem;
   min-width: 80%;
@@ -146,7 +170,7 @@ input {
   font-size: var(--font-md);
 }
 
-input::placeholder {
+.search::placeholder {
   color: var(--gray-dark);
   font-weight: 500;
   font-size: var(--font-md);
@@ -162,8 +186,47 @@ input::placeholder {
 }
 
 .demo {
-  padding: 4rem 2rem;
+  padding: 4rem 0;
 }
 .demo * {
-  margin: 1rem;
+  margin: 2rem;
+}
+
+/* layout */
+
+#root {
+  max-width: var(--container-width);
+  width: 100%;
+}
+
+#__Header,
+#__Hero,
+#__Main,
+#__Footer {
+  width: 100%;
+}
+
+#__Layout,
+#__Header,
+#__Hero {
+  background-color: var(--light);
+}
+
+#__Header {
+  padding: 3.625rem var(--spacing-xl--y);
+}
+
+#__Hero {
+  padding: 0 var(--spacing-xl--y);
+  height: 800px;
+}
+
+#__Main {
+  background-color: #eff1f7;
+  padding: var(--spacing-xl) var(--spacing-xl--y);
+}
+
+#__Footer {
+  background-color: #232127;
+  padding: var(--spacing-md--y) var(--spacing-xl--y);
 }
