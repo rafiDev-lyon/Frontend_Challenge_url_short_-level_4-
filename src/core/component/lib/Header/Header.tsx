@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { LOGO } from "../../SVG/LOGO";
 import { HeaderContainer } from "./Header_css";
@@ -12,21 +12,13 @@ type HeaderProps = {
 export default function Header({ children }: HeaderProps): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  function closeBurgerMenu() {
-    setIsOpen(false);
-  }
-
-  function toto(e: any) {
-    console.log("toto", e.stopPropagation(true));
-  }
-
   return (
     <>
       <HeaderContainer id="__Header">
-        <div className="header_content" onClick={toto}>
+        <div className="header_content">
           <header>
             <NavLink to="/">
-              <LOGO className="logo"></LOGO>
+              <LOGO className="logo" color="#34313D"></LOGO>
             </NavLink>
             <Navigation styles="link"></Navigation>
           </header>
@@ -46,7 +38,7 @@ export default function Header({ children }: HeaderProps): JSX.Element {
               <NavLink to="/" className="nav_link">
                 Login
               </NavLink>
-              <NavLink to="/" className="btn btn_rounded-big">
+              <NavLink to="/" className="btn btn_rounded-small">
                 Sign Up
               </NavLink>
             </div>
@@ -54,7 +46,13 @@ export default function Header({ children }: HeaderProps): JSX.Element {
         </div>
       </HeaderContainer>
 
-      <BurgerMenu cb={closeBurgerMenu} isOpen={isOpen} />
+      <BurgerMenu
+        cb={(e: MouseEvent) => {
+          e.preventDefault();
+          setIsOpen(false);
+        }}
+        isOpen={isOpen}
+      />
     </>
   );
 }

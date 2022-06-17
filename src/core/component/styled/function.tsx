@@ -34,7 +34,7 @@ export const S = {
     right: 0;
   `,
 
-  flexCenter: (direction: string, wrap = "nowrap") => css`
+  flexCenter: (direction: string = "row", wrap = "nowrap") => css`
     display: flex;
     flex-direction: ${direction};
     flex-wrap: ${wrap};
@@ -58,7 +58,7 @@ export const S = {
     return `box-shadow : 0 2px 4px ${color}`;
   },
 
-  centerAbsolute: (size: "string") => {
+  centerAbsolute: (size: string) => {
     return `calc(50% - ${size} / 2)`;
   },
 
